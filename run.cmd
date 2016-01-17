@@ -32,6 +32,6 @@ for %%n in (%qemusw%) do (
   if defined %%n set qemurun=!qemurun! -%%n !%%n!
 )
 
-echo %qemu%%qemurun%
+%qemu%%qemurun%
 for %%n in (%qemusw% qemusw) do set %%n=
 del %temp%\%~n0.tmp
