@@ -25,6 +25,7 @@ echo.
 
         # Time to install the packages, a good 750MB download here alone.
         apt-get install -y elementary-theme elementary-icon-theme elementary-default-settings elementary-desktop
+        apt-get install -y --no-install-recommends dconf-editor nautilus
 
         # For some reason, there are no desktop icons, no method of right-clicking on the desktop
         # and no way of changing the wallpaper exists. This enables these features.
