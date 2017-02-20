@@ -70,3 +70,4 @@ add-apt-repository -y ppa:webupd8team/java
 apt-get update
 apt-get upgrade -y
 apt-get dist-upgrade -y
+apt-get install -y xserver-xorg xinit lightdm mesa-utils-extra mesa-vdpau-drivers libgl1-mesa-dri libgl1-mesa-glx build-essentials cmake qt5-qmake flex bison git subversion mercurial
