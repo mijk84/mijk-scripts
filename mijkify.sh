@@ -83,4 +83,4 @@ add-apt-repository ppa:minecraft-installer-peeps/minecraft-installer
 apt-get update
 apt-get upgrade -y
 apt-get dist-upgrade -y
-apt-get install -y xserver-xorg xinit lightdm mesa-utils-extra mesa-vdpau-drivers libgl1-mesa-dri libgl1-mesa-glx build-essentials cmake qt5-qmake flex bison git subversion mercurial oracle-java8-installer google-chrome-stable steam minecraft-installer quassel-client transgui
+apt-get install -y xserver-xorg xinit lightdm mesa-utils-extra mesa-vdpau-drivers libgl1-mesa-dri libgl1-mesa-glx build-essential cmake qt5-qmake flex bison git subversion mercurial oracle-java8-installer google-chrome-stable steam minecraft-installer quassel-client transgui
