@@ -5,7 +5,7 @@ wget -O- http://archive.getdeb.net/getdeb-archive.key | apt-key add -
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - 
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4C9D234C
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys F9CB8DB0
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B05498B7
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B05498B7
 
 mv /etc/apt/sources.list /etc/apt/sources.list.old
 cat << EOF | tee /etc/apt/sources.list
