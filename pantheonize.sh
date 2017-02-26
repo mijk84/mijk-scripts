@@ -24,7 +24,7 @@ echo.
                 apt-get dist-upgrade -y
 
         # Time to install the packages, a good 750MB download here alone.
-        apt-get install -y elementary-theme elementary-icon-theme elementary-default-settings elementary-desktop
+        apt-get install -y elementary-theme elementary-icon-theme elementary-default-settings elementary-desktop gtk2-engines-pixbuf gnome-themes-standard libcanberra-gtk3-module:i386 libcanberra-gtk3-module
         apt-get install -y --no-install-recommends dconf-editor nautilus
 
         # For some reason, there are no desktop icons, no method of right-clicking on the desktop
