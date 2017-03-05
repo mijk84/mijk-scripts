@@ -24,6 +24,10 @@ flushipt() {
   done
 }
 
+if [ ! -d "./mnt/net" ]; then
+    mkdir -p ./mnt/net
+fi
+
 if id -u | grep -q '^0'; then
     :
 else
@@ -74,7 +78,7 @@ if [ -z "$(find . -iname ethersl.com)" ]; then
         exit 1
     fi
     sudo -u "#$Uid" bash -c 'wget -q http://crynwr.com/drivers/pktd11.zip \
-    && unzip -Cj pktd11.zip ethersl.com'
+    && unzip -Cj pktd11.zip ethersl.com -d ./mnt/net'
 fi
 
 if [ -z "$(find . -iname ircjr.exe)" ]; then
@@ -92,7 +96,7 @@ if [ -z "$(find . -iname ircjr.exe)" ]; then
     fi
 
     sudo -u "#$Uid" bash -c 'wget -q -O mtcp.zip http://www.brutman.com/mTCP/mTCP_2013-05-23.zip \
-    && unzip -Cj mtcp.zip'
+    && unzip -Cj mtcp.zip -d ./mnt/net'
 fi
 
 # Flushing...
