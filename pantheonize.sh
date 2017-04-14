@@ -4,6 +4,8 @@ if [ “$(id -u)” != “0” ]; then
    exit 1
 fi
 
+cp /etc/lsb_release /etc/lsb_release.bak
+
 echo Pantheonize v0.0.1 by mijk
 echo.
 echo This script will add the necessary PPA's to install the Pantheon window manager.
@@ -31,5 +33,8 @@ echo.
         # and no way of changing the wallpaper exists. This enables these features.
         gsettings set org.gnome.desktop.background show-desktop-icons true
         gsettings set org.pantheon.cerbere monitored-processes "['wingpanel', 'plank', 'slingshot-launcher --silent', 'nautilus -n']"
+
+         rm /etc/lsb_release
+         mv /etc/lsb_release.bak /etc/lsb_release
 
         echo Done! Enjoy!
