@@ -18,7 +18,10 @@ Batch files, shell scripts, modified code to help cross-compile.
 
 ## dosslip.sh
 >SLIP setup for DOSBox.
->
+>  
+>You will need the following packages:  
+>>socat slattach dosbox unzip wget  
+>  
 >Create a TCP.CFG file under ./mnt/NET with the following:
 >>hostname dosslip  
 >>IPADDR 192.168.7.2  
