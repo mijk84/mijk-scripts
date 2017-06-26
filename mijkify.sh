@@ -69,7 +69,7 @@ deb-src http://ppa.launchpad.net/ubuntu-wine/ppa/ubuntu $release main
 EOF
 
 #### WebUpd8 Java
-add-apt-repository -y ppa:webupd8team/java
+yes | add-apt-repository -y ppa:webupd8team/java
 
 ## Google Chrome
 sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
@@ -78,9 +78,9 @@ sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
 sh -c 'echo "deb http://repo.steampowered.com/steam/ precise steam" >> /etc/apt/sources.list.d/steam.list'
 
 ## Minecraft
-add-apt-repository ppa:minecraft-installer-peeps/minecraft-installer
+yes | add-apt-repository ppa:minecraft-installer-peeps/minecraft-installer
 
 apt-get update
 apt-get upgrade -y
 apt-get dist-upgrade -y
-apt-get install -y xserver-xorg xinit lightdm mesa-utils-extra mesa-vdpau-drivers libgl1-mesa-dri libgl1-mesa-glx build-essential cmake qt5-qmake flex bison git subversion mercurial oracle-java8-installer google-chrome-stable steam minecraft-installer quassel-client transgui
+apt-get install -y build-essential cmake qt5-qmake flex bison git subversion mercurial oracle-java8-installer google-chrome-stable steam minecraft-installer quassel-client transgui
