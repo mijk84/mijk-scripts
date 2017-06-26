@@ -32,3 +32,6 @@ Batch files, shell scripts, modified code to help cross-compile.
 
 ## dosslip.cnf
 >This is a normal and editable dosbox.conf. The most important is what is in the SERIAL and AUTOEXEC sections. You're best to download this and work from there.
+
+## fix-intel-gut.sh
+>Fixes installing Intel Graphics Update Tool on Ubuntu based distros.
