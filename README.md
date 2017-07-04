@@ -35,3 +35,6 @@ Batch files, shell scripts, modified code to help cross-compile.
 
 ## fix-intel-gut.sh
 >Fixes installing Intel Graphics Update Tool on Ubuntu based distros.
+
+## sysinfo.sh
+>Just some silly script I wrote with the basic bash knowledge I know. Great for pasting into chat rooms to brag about your computer.
