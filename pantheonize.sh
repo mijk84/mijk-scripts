@@ -31,8 +31,8 @@ echo.
 
         # For some reason, there are no desktop icons, no method of right-clicking on the desktop
         # and no way of changing the wallpaper exists. This enables these features.
-        gsettings set org.gnome.desktop.background show-desktop-icons true
-        gsettings set org.pantheon.cerbere monitored-processes "['wingpanel', 'plank', 'slingshot-launcher --silent', 'nautilus -n']"
+        su - mike -c gsettings set org.gnome.desktop.background show-desktop-icons true
+        su - mike -c gsettings set org.pantheon.desktop.cerbere monitored-processes "['wingpanel', 'plank', 'slingshot-launcher --silent', 'nautilus -n']"
 
          rm /etc/lsb_release
          mv /etc/lsb_release.bak /etc/lsb_release
