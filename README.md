@@ -1,4 +1,4 @@
-# mijk-batch #
+# mijk-scripts #
 
 Batch files, shell scripts, modified code to help cross-compile.
 
