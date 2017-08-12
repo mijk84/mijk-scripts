@@ -57,6 +57,10 @@ if [ -z "$(find . -iname ircjr.exe)" ]; then
     unzip mTCP_2015-07-05.zip -d ./mnt/net && rm mTCP_2015-07-05.zip
 fi
 
+if [ -z "$(find . -iname autoexec.bat)" ]; then
+    touch ./mnt/autoexec.bat
+fi
+
 sudo -u "#$Uid" dosbox -conf dosslip.cnf &
 Pid_Saved="$!"
 
