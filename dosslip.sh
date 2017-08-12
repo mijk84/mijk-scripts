@@ -46,6 +46,17 @@ socat PTY,link="$Dev_Pts",raw,echo=0 TCP-LISTEN:"$Slip_Port" &
 Pid_Saved_3="$!"
 sleep 1
 
+if [ -z "$(find . -iname ethersl.com)" ]; then
+    mkdir -p ./mnt/net
+    wget -q http://crynwr.com/drivers/pktd11.zip
+    unzip -Cj pktd11.zip ethersl.com -d ./mnt/net && rm pktd11.zip
+fi
+
+if [ -z "$(find . -iname ircjr.exe)" ]; then
+    wget -q http://www.brutman.com/mTCP/mTCP_2015-07-05.zip
+    unzip mTCP_2015-07-05.zip -d ./mnt/net
+fi
+
 sudo -u "#$Uid" dosbox -conf dosslip.cnf &
 Pid_Saved="$!"
 
