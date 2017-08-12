@@ -23,7 +23,8 @@ Batch files, shell scripts, modified code to help cross-compile.
 >>socat slattach dosbox unzip wget  
 >  
 >Create a TCP.CFG file under ./mnt/NET with the following:
->>hostname dosslip  
+>>hostname dosslip 
+>>PACKETINT 0x60
 >>IPADDR 192.168.7.2  
 >>NETMASK 255.255.255.252  
 >>GATEWAY 192.168.7.1  
