@@ -54,7 +54,7 @@ fi
 
 if [ -z "$(find . -iname ircjr.exe)" ]; then
     wget -q http://www.brutman.com/mTCP/mTCP_2015-07-05.zip
-    unzip mTCP_2015-07-05.zip -d ./mnt/net
+    unzip mTCP_2015-07-05.zip -d ./mnt/net && rm mTCP_2015-07-05.zip
 fi
 
 sudo -u "#$Uid" dosbox -conf dosslip.cnf &
