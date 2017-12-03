@@ -40,5 +40,8 @@ Batch files, shell scripts, modified code to help cross-compile.
 ## sysinfo.sh
 >Just some silly script I wrote with the basic bash knowledge I know. Great for pasting into chat rooms to brag about your computer.
 
+## sysinfo.cmd
+>Just some silly script I wrote with the basic batch knowledge I know. Great for pasting into chat rooms to brag about your computer.
+
 ## gtimg.sh
 >Gotek floppy imager. Makes it easier to image floppies to a Gotek floppy emulator.
