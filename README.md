@@ -42,3 +42,12 @@ Batch files, shell scripts, modified code to help cross-compile.
 
 ## sysinfo.cmd
 >Just some silly script I wrote with the basic batch knowledge I know. Great for pasting into chat rooms to brag about your computer.
+
+## rssfeed.rb
+>A Ruby script that parses RSS feeds.
+
+## getshows.sh
+>Downloads TV shows from an RSS feed, requires rssfeed.rb
+
+## update-media-player.sh
+>Finds movies and organizes them in a specific folder.
