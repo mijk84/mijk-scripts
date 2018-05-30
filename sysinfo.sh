@@ -33,3 +33,4 @@ case "$1" in
     -?) echo Usage: sysinfo && echo      sysinfo -s [This pastes to the shell instead] && echo      system --shell [This pastes to the shell instead] ;;
     --help) echo Usage: sysinfo && echo      sysinfo -s [This pastes to the shell instead] && echo      sysinfo --shell [This pastes to the shell instead] ;;
     *) echo Try running this on its own or run: sysinfo --help ;;
+esac
