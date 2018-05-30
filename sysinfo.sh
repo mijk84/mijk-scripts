@@ -1,9 +1,12 @@
 #!/bin/bash
-# System Info Tool v1 - Mike Ladouceur
+# System Info Tool v1.1 - Mike Ladouceur
+b=$(tput bold)
+n=$(tput sgr0)
+
 echo This simply copies your system information to the clipboard to paste in a chat room.
 echo
 
-SI="echo Hostname: $(hostname) \** OS: $(cat /etc/lsb-release | grep DESCRIPTION | cut -c 22- | head -c -2) \** CPU: $(cat /proc/cpuinfo | grep cores | tail -n1 | awk '{ print $4 }')x $(cat /proc/cpuinfo | grep model | tail -n1 | awk '{$1=$2=$3=""; print $0}') \** RAM: $(echo $(grep MemTotal /proc/meminfo | awk '{print $2}') / 1000000 | bc)GB \** VGA: $(lspci | grep VGA | awk '{$1=$2=$3=$4=""; print $0}') \** Uptime: $(uptime --pretty | cut -c 4-)"
+SI="echo ${b}Hostname${n}: $(hostname) ${b}• OS${n}: $(cat /etc/lsb-release | grep DESCRIPTION | cut -c 22- | head -c -2) ${b}• CPU${n}: $(cat /proc/cpuinfo | grep cores | tail -n1 | awk '{ print $4 }')x $(cat /proc/cpuinfo | grep model | tail -n1 | awk '{$1=$2=$3=""; print $0}') ${b}• RAM${n}: $(echo $(grep MemTotal /proc/meminfo | awk '{print $2}') / 1000000 | bc)GB ${b}• VGA${n}: $(lspci | grep VGA | awk '{$1=$2=$3=$4=""; print $0}') ${b}• Uptime${n}: $(uptime --pretty | cut -c 4-)"
 
 if ! which xclip > /dev/null; then
     echo
@@ -30,4 +33,3 @@ case "$1" in
     -?) echo Usage: sysinfo && echo      sysinfo -s [This pastes to the shell instead] && echo      system --shell [This pastes to the shell instead] ;;
     --help) echo Usage: sysinfo && echo      sysinfo -s [This pastes to the shell instead] && echo      sysinfo --shell [This pastes to the shell instead] ;;
     *) echo Try running this on its own or run: sysinfo --help ;;
-esac
