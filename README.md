@@ -6,9 +6,6 @@ Batch files, shell scripts, modified code to help cross-compile.
 ## mkflp
 >Create a floppy image from the files in the current directory.
 
-## run.sh
->Qemu launcher for Linux
-
 ## dosslip.sh
 >SLIP setup for DOSBox.
 >  
