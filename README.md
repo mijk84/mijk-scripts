@@ -3,10 +3,6 @@
 Batch files, shell scripts, modified code to help cross-compile.
 
 ----------
-## makefile 
-
-> Makefile to cross-compile Steam IM [plugin](https://github.com/EionRobb/pidgin-opensteamworks) for Pidgin
- 
 ## mkflp
 >Create a floppy image from the files in the current directory.
 
@@ -33,9 +29,6 @@ Batch files, shell scripts, modified code to help cross-compile.
 
 ## dosslip.cnf
 >This is a normal and editable dosbox.conf. The most important is what is in the SERIAL and AUTOEXEC sections. You're best to download this and work from there.
-
-## fix-intel-gut.sh
->Fixes installing Intel Graphics Update Tool on Ubuntu based distros.
 
 ## sysinfo.sh
 >Just some silly script I wrote with the basic bash knowledge I know. Great for pasting into chat rooms to brag about your computer.
