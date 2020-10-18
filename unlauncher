@@ -1,0 +1,7 @@
+#!/bin/sh
+if [ -z "$1" ]
+then
+      echo "Provide a path and file name of the launcher."
+else
+      $(cat $1 | grep Exec | cut -c 6-)
+fi
