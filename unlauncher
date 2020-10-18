@@ -1,7 +1,48 @@
-#!/bin/sh
-if [ -z "$1" ]
-then
-      echo "Provide a path and file name of the launcher."
-else
-      $(cat $1 | grep Exec | cut -c 6-)
+#!/bin/bash
+FILE=$1
+Version()
+{
+echo "unlauncher 1.0"
+echo "License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>."
+echo "This is free software: you are free to change and redistribute it."
+echo "There is NO WARRANTY, to the extent permitted by law."
+echo
+echo "Written by Mike Ladouceur"
+}
+
+Syntax()
+{
+   echo "Syntax: unlauncher [-h|-v] launcher"
+   echo "options:"
+   echo "-h     Print this Help."
+   echo "-v     Print version."
+   echo
+}
+
+Help()
+{
+   # Display Help
+   Version
+   echo "Utility to launch launcher files from a terminal."
+   echo
+   Syntax
+}
+
+no_args="true"
+while getopts ":hv" options; do
+    case "$options" in
+    h)
+        Help
+        ;;
+    v)
+        Version
+        ;;
+    esac
+    no_args="false"
+done
+
+if [ -f "$FILE" ]; then
+    $(cat $FILE| grep Exec | cut -c 6-)
 fi
+
+[[ "$no_args" == "true" ]] && { Syntax; exit 1; }
