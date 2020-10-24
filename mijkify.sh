@@ -1,5 +1,5 @@
 #!/bin/sh
-cli=build-essential cmake qt5-qmake flex bison git subversion mercurial autotools-dev autoconf google-chrome-stable
+cli=build-essential cmake qt5-qmake flex bison git subversion mercurial autotools-dev autoconf meson ninja-build
 gui=google-chrome-stable steam quassel-client transgui
 
 apt-get update
