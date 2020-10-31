@@ -25,7 +25,7 @@ echo.
                 apt-get dist-upgrade -y
 
         # Time to install the packages, a good 750MB download here alone.
-        apt-get install -y elementary-theme elementary-icon-theme elementary-default-settings elementary-desktop gtk2-engines-pixbuf gnome-themes-standard libcanberra-gtk3-module:i386 libcanberra-gtk3-module
+        apt-get install -y elementary-theme elementary-icon-theme elementary-default-settings elementary-desktop gtk2-engines-pixbuf gnome-themes-standard libcanberra-gtk3-module
 
          rm /etc/lsb_release
          mv /etc/lsb_release.bak /etc/lsb_release
