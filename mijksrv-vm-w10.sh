@@ -13,7 +13,7 @@ qemu-system-x86_64 \
 -device virtio-net-pci,netdev=net0 -netdev user,id=net0,hostfwd=tcp::3389-:3389 \
 -usb -device usb-kbd -device usb-mouse \
 -device ich9-intel-hda -device hda-output \
--display egl-headless \
+-display egl-headless,rendernode=/dev/dri/card0 \
 -device qxl-vga,id=video0,ram_size=134217728,vram_size=134217728,vgamem_mb=512 \
 -device virtio-serial-pci \
 -spice port=9000,disable-ticketing,image-compression=auto_glz,jpeg-wan-compression=always,playback-compression=off,zlib-glz-wan-compression=never,streaming-video=filter,agent-mouse=on \
