@@ -5,18 +5,18 @@ set qemuurl=https://qemu.weilnetz.de/w64/
 set updfile=C:\qemu\update.ini
 
 :: Dev editable variables
-set token=for /f "tokens=
-set qemuvar=delims==^<^>/ " %%n in ('%curl% -s %qemuurl% ^| find ".exe"') do set
+set gettoken=for /f "tokens=
+set setvar=delims==^<^>/ " %%n in ('%curl% -s %qemuurl% ^| find ".exe"') do set
 
 :: The rest of the script
 echo Checking for updates ...
 echo.
 
 :: Get latest qemu build exe.
-%token% 12 %qemuvar% qemudl=%%n
+%gettoken% 12 %setvar% qemudl=%%n
 
 :: Get qemu build date.
-%token% 14 %qemuvar% qemudt=%%n
+%gettoken% 14 %setvar% qemudt=%%n
 
 :: Check for update.
 for /f %%n in ('type C:\qemu\update.ini') do set lastupd=%%n
