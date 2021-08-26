@@ -20,4 +20,4 @@ echo.
 
 :: Check for update.
 for /f %%n in ('type C:\qemu\update.ini') do set lastupd=%%n
-	if %qemudt% GTR %lastupd% (%curl% -s %qemuurl%/%qemudl% -O && echo %qemudt%>%updfile%)  else echo No update yet.
+	if %qemudt% GTR %lastupd% (echo Downloading %qemudl% ... & %curl% -s %qemuurl%/%qemudl% -O && echo %qemudt%>%updfile%)  else echo No update yet.
