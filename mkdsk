@@ -1,0 +1,25 @@
+#!/bin/bash
+# Based on mkmacdisk.sh from https://github.com/novaspirit
+# 10/16/2021 Mike Ladouceur - https://github.com/mijk84/mijk-scripts
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root"
+   exit 1
+fi
+
+hfsutils=$(which hformat)
+if [[ -z $hfsutils ]]; then
+   echo "You'll need hfsutils to run this scipt."
+   exit 1
+fi
+
+label=$0
+dskname=$1
+size=$2
+
+if [[ -z $label || -z $dskname || -z $size ]]; then
+  echo "Usage: mkdsk [label] [disk name] [size in MB]"
+  exit 1
+fi
+
+dd if=/dev/zero of=$dskname.dsk bs=1M count=$size
+hformat -l $label $dskname.dsk
