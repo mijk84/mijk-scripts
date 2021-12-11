@@ -6,7 +6,7 @@
 set Szip="C:\Program Files\7-Zip\7z.exe"
 set curl=C:\windows\system32\curl.exe
 set ovmfurl=https://www.kraxel.org/repos/jenkins/edk2/
-set fdfile=OVMF_CODE-pure-efi.fd
+set fdfile=OVMF-pure-efi.fd
 
 echo Downloading latest OVMF image ...
 
