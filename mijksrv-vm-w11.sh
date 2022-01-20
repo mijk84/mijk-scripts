@@ -1,7 +1,12 @@
 #!/bin/sh
 ## Emulated TPM 2.0 device
 mkdir /tmp/emulated_tpm
-swtpm socket --tpmstate dir=/tmp/emulated_tpm --ctrl type=unixio,path=/tmp/emulated_tpm/swtpm-sock --log level=20 --tpm2 -d
+swtpm socket \
+--tpmstate dir=/tmp/emulated_tpm \
+--ctrl type=unixio,path=/tmp/emulated_tpm/swtpm-sock \
+--log level=20 \
+--tpm2 \
+--daemon
 
 ## QEMU VM
 /usr/local/bin/qemu-system-x86_64 \
