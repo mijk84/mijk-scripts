@@ -1,0 +1,31 @@
+@echo off
+:: imDisk Installer for Windows 10/11 ARM64
+:: Mike Ladouceur
+
+:: Download imDisk
+curl -O http://ltr-data.se/files/imdiskinst.exe
+
+:: Extract installer to temporary folder
+md tmp & cd tmp
+"c:\Program Files\7-Zip\7z.exe" x ..\imdiskinst.exe
+
+:: Copy system files
+for %%n in (sys\ARM64\imdisk.sys awealloc\arm64\awealloc.sys) do copy %%n C:\Windows\system32\drivers
+for %%n in (cpl\arm64\imdisk.cpl cli\arm64\imdisk.exe svc\arm64\imdsksvc.exe) do copy %%n C:\Windows\system32
+for %%n in (cpl\arm\imdisk.cpl cli\arm\imdisk.exe) do copy %%n C:\Windows\sysarm32
+for %%n in (cpl\i386\imdisk.cpl cli\i386\imdisk.exe) do copy %%n C:\Windows\syswow64
+
+:: Create drivers and services
+sc create imdisk type= kernel error= ignore start= auto binPath= system32\drivers\imdisk.sys
+sc create awealloc type= kernel error= ignore start= auto binPath= system32\drivers\awealloc.sys
+sc create imdsksvc type= own error= ignore start= auto binPath= imdsksvc.exe
+
+:: Start drivers and services
+net start imdisk
+net start awealloc
+net start imdsksvc
+
+:: Delete temporary files
+cd ..
+rd /s tmp
+del imdiskinst.exe
