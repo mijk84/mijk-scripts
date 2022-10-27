@@ -12,9 +12,9 @@ if [[ -z $hfsutils ]]; then
    exit 1
 fi
 
-label=$0
-dskname=$1
-size=$2
+label=$1
+dskname=$2
+size=$3
 
 if [[ -z $label || -z $dskname || -z $size ]]; then
   echo "Usage: mkdsk [label] [disk name] [size in MB]"
