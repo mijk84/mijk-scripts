@@ -1,6 +1,7 @@
 #!/bin/sh
 ## Emulated TPM 2.0 device
 mkdir /tmp/emulated_tpm
+touch /tmp/foo-cancel
 swtpm socket \
 --tpmstate dir=/tmp/emulated_tpm \
 --ctrl type=unixio,path=/tmp/emulated_tpm/swtpm-sock \
