@@ -1,16 +1,12 @@
 @echo off
-
-Title: Final Check for Windows 11 GCI 2025 2H2 and previous images (April 2025)
+Title: Final Check for Windows 11 GCI 2025 24H2 and previous images (April 2025)
+set pshell=powershell -ExecutionPolicy Bypass -File 
 
 :: Re-add WMIC command to Windows 11 24H2 to facilitate FinalCheck and RemoteConsole use.
-powershell.exe -ExecutionPolicy Bypass -File Files\Install_WMIC_W11.ps1
-
-::Change to run in current directory
-PUSHD %~dp0
-echo.
+%pshell% Files\Install_WMIC_W11.ps1
 
 echo Firewall enable jump and mapping
-Powershell.exe -ExecutionPolicy Bypass -File .\Files\firewall.ps1
+%pshell% Files\firewall.ps1
 echo.
 
 echo Updating Group Policy
@@ -62,8 +58,7 @@ IF /I "%ip%" == "142.40.200.39" (
 echo.
 
 echo Disabling Sleep and Hibernation
-powercfg /x -hibernate-timeout-ac 0
-powercfg /x -standby-timeout-ac 0
+for %%n in (hibernate standby) do powercfg /x -%%n-timeout-ac 0
 echo.
 
 echo Setting Folder Options
@@ -71,22 +66,7 @@ regedit /s "Files\Explorer.reg"
 echo.
 
 echo Sound Test
-echo   BEEP!
-powershell "[console]::beep(262,500)"
-echo   BEEP!
-powershell "[console]::beep(294,500)"
-echo   BEEP!
-powershell "[console]::beep(330,500)"
-echo   BEEP!
-powershell "[console]::beep(349,500)"
-echo   BEEP!
-powershell "[console]::beep(392,500)"
-echo   BEEP!
-powershell "[console]::beep(440,500)"
-echo   BEEP!
-powershell "[console]::beep(493,500)"
-echo   BEEP!
-powershell "[console]::beep(523,500)"
+for %%n in (262 294 330 349 392 440 493 523) do powershell "[console]::beep(%%n,500" & echo   BEEP!
 echo.
 
 REM Detect if laptop
@@ -110,16 +90,14 @@ echo.
 
 :: Clear temp driver files
 echo Deleting driver folders
-rmdir /s /q "C:\Out-of-Box Drivers"
-rmdir /s /q "C:\Dell"
-rmdir /s /q "C:\Intel"
+for %%n in ("Out-of-Box Drivers" Dell Intel) do rd /s /q %%n
 echo.
 
 :: Check for LAPS dll file
 
 if not exist "%WINDIR%"\AdmPwd.dll (
 copy /y "Files\AdmPwd.dll" "%WINDIR%"
-"regsvr32.exe" /s "%WINDIR%\AdmPwd.dll"
+regsvr32 /s "%WINDIR%\AdmPwd.dll"
 gpupdate /force
 )
 
@@ -128,22 +106,18 @@ WMIC /namespace:\\root\ccm path sms_client CALL TriggerSchedule "{00000000-0000-
 echo.
 
 echo Remove Zscaler
-"%PROGRAMFILES%"\Zscaler\ZSAInstaller\uninstall.exe --mode unattended
+"%PROGRAMFILES%"\Zscaler\ZSAInstaller\uninstall --mode unattended
 echo.
 
 echo Enabling SecureBoot
 FOR /F "tokens=2 delims==" %%A IN ('WMIC COMPUTERSYSTEM GET Manufacturer/VALUE ^| FIND /I "Manufacturer"') DO SET Manufacturer=%%A
 echo Manufacturer = %manufacturer%
 IF /I "%Manufacturer%" == "LENOVO" (
-"Files\ThinkBiosConfig.hta" "config=SecureBoot,Enable" 
-"Files\ThinkBiosConfig.hta" "config=Secure Boot,Enabled" 
+for %%n in ("config=SecureBoot,Enable" "config=Secure Boot,Enabled") do "Files\ThinkBiosConfig.hta" "%%n" 
 ) else IF /I "%Manufacturer%" == "Dell Inc." (
 robocopy "Files\X86_64" "C:\temp\X86_64" /e > NUL
-"C:\temp\X86_64\cctk.exe" "--secureboot=enable"
-"C:\temp\X86_64\cctk.exe" "--wakeonlan=lanonly"
-"C:\temp\X86_64\cctk.exe" "--WlanAutoSense=enabled"
-"C:\temp\X86_64\cctk.exe" "--sata0=enabled"
-rmdir "C:\temp\X86_64" /s /q
+for %%n in (secureboot=enable wakeonlan=lanonly WlanAutoSense=Enabled sata0=enabled) do C:\temp\X86_64\cctk --%%n
+rd /s /q "C:\temp\X86_64"
 )
 echo.
 
