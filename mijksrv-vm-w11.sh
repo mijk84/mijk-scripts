@@ -27,11 +27,14 @@ swtpm socket \
 -device virtio-net-pci,netdev=net0 -netdev user,id=net0,hostfwd=tcp::3389-:3389 \
 -device nec-usb-xhci,id=xhci \
 -device usb-kbd,bus=xhci.0 -device usb-tablet,bus=xhci.0 \
+-device usb-host,bus=xhci.0,vendorid=0x17e9,productid=0x4301 \
 -display egl-headless,rendernode=/dev/dri/card0,gl=on \
--device qxl-vga,id=video0,ram_size=134217728,vram_size=134217728,vgamem_mb=512 \
--spice disable-ticketing=on,image-compression=off,seamless-migration=on,unix=on,addr=/run/user/1000/spice.sock,gl=on \
+-device virtio-gpu,hostmem=268435456 \
 -device virtio-serial -chardev spicevmc,id=vdagent,debug=0,name=vdagent \
 -device virtserialport,chardev=vdagent,name=com.redhat.spice.0 \
 -drive file=hda.img,if=virtio,cache.direct=on,aio=native,format=qcow2 \
 -boot c \
 -monitor stdio
+
+## Stop swtpm
+kill -15 `pidof swtpm`
