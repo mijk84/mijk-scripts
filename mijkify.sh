@@ -1,5 +1,5 @@
 #!/bin/sh
-cli=build-essential cmake qt5-qmake flex bison git subversion mercurial autotools-dev autoconf python3-pip
+cli=build-essential cmake flex bison git subversion mercurial autotools-dev autoconf autoconf-archive python3-pip
 gui=google-chrome-stable steam quassel-client transgui
 
 apt-get update
