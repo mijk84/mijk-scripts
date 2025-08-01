@@ -1,0 +1,2 @@
+@reboot echo none > /sys/class/leds/green_led/trigger
+@reboot echo none > /sys/class/leds/blue_led/trigger
