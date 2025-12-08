@@ -1,0 +1,25 @@
+@echo off
+qemu-system-x86_64 ^
+-nodefaults ^
+-M pc,hmat=on ^
+--accel tcg,tb-size=512 ^
+-cpu pentium3,hv-time,hv-relaxed,hv-vapic,hv-spinlocks=0x1fff ^
+        -smp 1,cores=1,threads=1,sockets=1,maxcpus=1 ^
+-rtc base=localtime ^
+-m 3072,slots=3,maxmem=4G ^
+        -mem-prealloc ^
+        -object memory-backend-ram,size=1G,id=m0 ^
+        -object memory-backend-ram,size=1G,id=m1 ^
+        -object memory-backend-ram,size=1G,id=m2 ^
+        -numa node,nodeid=0,memdev=m0,cpus=0 ^
+        -numa node,nodeid=1,memdev=m1 ^
+        -numa node,nodeid=2,memdev=m2,initiator=0 ^
+-display sdl,gl=on ^
+-device vmware-svga,id=video0,vgamem_mb=32 ^
+-device pcnet,netdev=net0 -netdev user,id=net0 ^
+-device ich9-usb-uhci1,id=uhci ^
+-device usb-kbd,bus=uhci.0 -device usb-tablet,bus=uhci.0 ^
+-device AC97 -audio dsound ^
+-drive file=hda.img,format=raw,media=disk,aio=native ^
+-boot c ^
+-monitor stdio
