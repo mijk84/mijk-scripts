@@ -33,7 +33,7 @@ echo $outputPath = ".\FileZilla_Setup.exe" >> FileZilla.ps1
 echo. >> FileZilla.ps1
 echo Invoke-WebRequest -Uri $installerUrl -OutFile $outputPath >> FileZilla.ps1
 echo. >> FileZilla.ps1
-$processInfo = Start-Process -FilePath $outputPath -ArgumentList "/S /NCRC /ALLUSERS" -Wait -PassThru >> FileZilla.ps1
+echo $processInfo = Start-Process -FilePath $outputPath -ArgumentList "/S /NCRC /ALLUSERS" -Wait -PassThru >> FileZilla.ps1
 echo. >> FileZilla.ps1
 echo Remove-Item $outputPath >> FileZilla.ps1
 
