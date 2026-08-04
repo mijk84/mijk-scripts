@@ -14,12 +14,13 @@ qemu-system-x86_64 ^
         -numa node,nodeid=0,memdev=m0,cpus=0 ^
         -numa node,nodeid=1,memdev=m1 ^
         -numa node,nodeid=2,memdev=m2,initiator=0 ^
--display sdl,gl=on ^
+-display egl-headless ^
+-spice disable-ticketing=on,unix=off,addr=0.0.0.0,port=5900,video-codec=gstreamer:h264 ^
 -device vmware-svga,id=video0,vgamem_mb=32 ^
 -device pcnet,netdev=net0 -netdev user,id=net0 ^
 -device ich9-usb-uhci1,id=uhci ^
 -device usb-kbd,bus=uhci.0 -device usb-tablet,bus=uhci.0 ^
--device AC97 -audio dsound ^
--drive file=hda.img,format=raw,media=disk,aio=native ^
+-device AC97 -audio spice ^
+-drive file=hda.img,format=raw,media=disk ^
 -boot c ^
 -monitor stdio
