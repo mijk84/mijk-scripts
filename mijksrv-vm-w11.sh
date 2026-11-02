@@ -19,20 +19,19 @@ swtpm socket \
 -M q35,smm=on,accel=kvm,kernel-irqchip=split \
 -device intel-iommu,intremap=on \
 -rtc base=localtime \
--smp 8,sockets=1,cores=4,threads=2 \
--m 8192 \
+-smp 6,sockets=1,cores=3,threads=2 \
+-m 16384 \
     -mem-prealloc \
 -tpmdev passthrough,id=tpm0,path=/dev/tpm0,cancel-path=/tmp/foo-cancel \
 -device tpm-tis,tpmdev=tpm0 \
 -device virtio-net-pci,netdev=net0 -netdev user,id=net0,hostfwd=tcp::3389-:3389 \
 -device nec-usb-xhci,id=xhci \
 -device usb-kbd,bus=xhci.0 -device usb-tablet,bus=xhci.0 \
--device usb-host,bus=xhci.0,vendorid=0x17e9,productid=0x4301 \
 -display egl-headless,rendernode=/dev/dri/card0,gl=on \
--device virtio-gpu,hostmem=268435456 \
+-device vfio-pci,sysfsdev=/sys/bus/mdev/devices/1d90bcab-19a1-417a-ab33-bc974ad065f9 \
 -device virtio-serial -chardev spicevmc,id=vdagent,debug=0,name=vdagent \
 -device virtserialport,chardev=vdagent,name=com.redhat.spice.0 \
--drive file=hda.img,if=virtio,cache.direct=on,aio=native,format=qcow2 \
+-drive file=hda.img,if=virtio,cache.direct=on,aio=native,format=raw \
 -boot c \
 -monitor stdio
 
